@@ -21,6 +21,10 @@ Copy the resulting HTML and paste it into Sedna.
 		<td><input type="text" id="mobile_phone_input"/></td>
 	</tr>
 	<tr>
+		<td>Norientpool?</td>
+		<td><input type="checkbox" id="norient_checkbox"/></td>
+	</tr>
+	<tr>
 		<td></td>
 		<td><button type="button" id="btn_generate" onclick="generateSignature()"/>Generate!</td>
 	</tr>
@@ -41,11 +45,17 @@ Copy the resulting HTML and paste it into Sedna.
 		var position = document.getElementById("position_input").value;
 		var office = document.getElementById("office_phone_input").value;
 		var mobile = document.getElementById("mobile_phone_input").value;
+		var norient_checkbox = document.getElementById("norient_checkbox");
+		var norient_text = "";
 		var html_out = document.getElementById("html_out");
 		var preview = document.getElementById("sig_preview");
 		
-		html_out.value = "<div style=\"font-size:10pt; font-family:'Arial'; padding-bottom:20px;\">Best regards</div><div style=\"padding-bottom:20px;\"><span style=\"font-size:11pt; font-family:'Arial';\">" + name + "<br /></span><span style=\"font-size:9pt; font-family:'Arial';\">" + position + "</span></div><div style=\"font-size:9pt; font-family:'Arial'; padding-bottom:20px;\">D: " + office + "<br />M: " + mobile + "</div><a href=\"http://www.norden.com/\"><img id=\"norden_logo\" src=\"https://s3.amazonaws.com/S3-Logos/norden-logos/NORDEN_logo_0.png\" width=\"139\" height=\"49\" border=\"0\" /></a><br /><a href=\"https://www.facebook.com/dampskibsselskabetnorden\"><img id=\"facebook\" src=\"https://s3.amazonaws.com/S3-Logos/norden-logos/Facebook_1.png\" width=\"25\" height=\"25\" border=\"0\" /></a><a href=\"https://www.linkedin.com/company/ds-norden/?originalSubdomain=dk\"><img id=\"linkedin\" src=\"https://s3.amazonaws.com/S3-Logos/norden-logos/LinkedIn_0.png\" width=\"26\" height=\"25\" border=\"0\" /></a><a href=\"https://www.youtube.com/channel/UClzI1ehHAaJBdn7ur7PIvew\"><img id=\"youtube\" src=\"https://s3.amazonaws.com/S3-Logos/norden-logos/Youtube_0.png\" width=\"25\" height=\"25\" border=\"0\" /></a><a href=\"https://www.instagram.com/ds_norden/?hl=da\"><img id=\"instagram\" src=\"https://s3.amazonaws.com/S3-Logos/norden-logos/Instagram_0.png\" width=\"25\" height=\"25\" border=\"0\" /></a></div>";
-		preview.innerHTML = "<div style=\"font-size:10pt; font-family:'Arial'; padding-bottom:20px;\">Best regards</div><div style=\"padding-bottom:20px;\"><span style=\"font-size:11pt; font-family:'Arial';\">" + name + "<br /></span><span style=\"font-size:9pt; font-family:'Arial';\">" + position + "</span></div><div style=\"font-size:9pt; font-family:'Arial'; padding-bottom:20px;\">D: " + office + "<br />M: " + mobile + "</div><a href=\"http://www.norden.com/\"><img id=\"norden_logo\" src=\"https://s3.amazonaws.com/S3-Logos/norden-logos/NORDEN_logo_0.png\" width=\"139\" height=\"49\" border=\"0\" /></a><br /><a href=\"https://www.facebook.com/dampskibsselskabetnorden\"><img id=\"facebook\" src=\"https://s3.amazonaws.com/S3-Logos/norden-logos/Facebook_1.png\" width=\"25\" height=\"25\" border=\"0\" /></a><a href=\"https://www.linkedin.com/company/ds-norden/?originalSubdomain=dk\"><img id=\"linkedin\" src=\"https://s3.amazonaws.com/S3-Logos/norden-logos/LinkedIn_0.png\" width=\"26\" height=\"25\" border=\"0\" /></a><a href=\"https://www.youtube.com/channel/UClzI1ehHAaJBdn7ur7PIvew\"><img id=\"youtube\" src=\"https://s3.amazonaws.com/S3-Logos/norden-logos/Youtube_0.png\" width=\"25\" height=\"25\" border=\"0\" /></a><a href=\"https://www.instagram.com/ds_norden/?hl=da\"><img id=\"instagram\" src=\"https://s3.amazonaws.com/S3-Logos/norden-logos/Instagram_0.png\" width=\"25\" height=\"25\" border=\"0\" /></a></div>";
+		if(norient_checkbox.checked) {
+			norient_text = "<div style=\"font-size:9pt; font-family:'Arial'; padding-bottom:20px;\">Norient Product Pool (as agents to owners)</div>";
+		}
+		
+		html_out.value = "<div style=\"font-size:10pt; font-family:'Arial'; padding-bottom:20px;\">Best regards</div><div style=\"padding-bottom:20px;\"><span style=\"font-size:11pt; font-family:'Arial';\">" + name + "<br /></span><span style=\"font-size:9pt; font-family:'Arial';\">" + position + "</span></div>" + norient_text + "<div style=\"font-size:9pt; font-family:'Arial'; padding-bottom:20px;\">D: " + office + "<br />M: " + mobile + "</div><a href=\"http://www.norden.com/\"><img id=\"norden_logo\" src=\"https://s3.amazonaws.com/S3-Logos/norden-logos/NORDEN_logo_0.png\" width=\"139\" height=\"49\" border=\"0\" /></a><br /><a href=\"https://www.facebook.com/dampskibsselskabetnorden\"><img id=\"facebook\" src=\"https://s3.amazonaws.com/S3-Logos/norden-logos/Facebook_1.png\" width=\"25\" height=\"25\" border=\"0\" /></a><a href=\"https://www.linkedin.com/company/ds-norden/?originalSubdomain=dk\"><img id=\"linkedin\" src=\"https://s3.amazonaws.com/S3-Logos/norden-logos/LinkedIn_0.png\" width=\"26\" height=\"25\" border=\"0\" /></a><a href=\"https://www.youtube.com/channel/UClzI1ehHAaJBdn7ur7PIvew\"><img id=\"youtube\" src=\"https://s3.amazonaws.com/S3-Logos/norden-logos/Youtube_0.png\" width=\"25\" height=\"25\" border=\"0\" /></a><a href=\"https://www.instagram.com/ds_norden/?hl=da\"><img id=\"instagram\" src=\"https://s3.amazonaws.com/S3-Logos/norden-logos/Instagram_0.png\" width=\"25\" height=\"25\" border=\"0\" /></a></div>";
+		preview.innerHTML = "<div style=\"font-size:10pt; font-family:'Arial'; padding-bottom:20px;\">Best regards</div><div style=\"padding-bottom:20px;\"><span style=\"font-size:11pt; font-family:'Arial';\">" + name + "<br /></span><span style=\"font-size:9pt; font-family:'Arial';\">" + position + "</span></div>" + norient_text + "<div style=\"font-size:9pt; font-family:'Arial'; padding-bottom:20px;\">D: " + office + "<br />M: " + mobile + "</div><a href=\"http://www.norden.com/\"><img id=\"norden_logo\" src=\"https://s3.amazonaws.com/S3-Logos/norden-logos/NORDEN_logo_0.png\" width=\"139\" height=\"49\" border=\"0\" /></a><br /><a href=\"https://www.facebook.com/dampskibsselskabetnorden\"><img id=\"facebook\" src=\"https://s3.amazonaws.com/S3-Logos/norden-logos/Facebook_1.png\" width=\"25\" height=\"25\" border=\"0\" /></a><a href=\"https://www.linkedin.com/company/ds-norden/?originalSubdomain=dk\"><img id=\"linkedin\" src=\"https://s3.amazonaws.com/S3-Logos/norden-logos/LinkedIn_0.png\" width=\"26\" height=\"25\" border=\"0\" /></a><a href=\"https://www.youtube.com/channel/UClzI1ehHAaJBdn7ur7PIvew\"><img id=\"youtube\" src=\"https://s3.amazonaws.com/S3-Logos/norden-logos/Youtube_0.png\" width=\"25\" height=\"25\" border=\"0\" /></a><a href=\"https://www.instagram.com/ds_norden/?hl=da\"><img id=\"instagram\" src=\"https://s3.amazonaws.com/S3-Logos/norden-logos/Instagram_0.png\" width=\"25\" height=\"25\" border=\"0\" /></a></div>";
 	}
 </script>
 
@@ -57,29 +67,31 @@ Be sure to remove all newlines before using it. You may use this tool: https://w
 
 ----
 
-<div style=\"font-size:10pt; font-family:'Arial'; padding-bottom:20px;\">
+<div style="font-size:10pt; font-family:'Arial'; padding-bottom:20px;">
 Best regards
 </div>
-<div style=\"padding-bottom:20px;\">
-<span style=\"font-size:11pt; font-family:'Arial';\">
-FULL 
+<div style="padding-bottom:20px;">
+<span style="font-size:11pt; font-family:'Arial';">
+FULL NAME
 <br />
 </span>
-<span style=\"font-size:9pt; font-family:'Arial';\">
+<span style="font-size:9pt; font-family:'Arial';">
 POSITION
 </span>
 </div>
-<div style=\"font-size:9pt; font-family:'Arial'; padding-bottom:20px;\">
+<div style="font-size:9pt; font-family:'Arial'; padding-bottom:20px;">
+Norient Product Pool (as agents to owners)
+</div>
+<div style="font-size:9pt; font-family:'Arial'; padding-bottom:20px;">
 D: OFFICE PHONE
 <br />
 M: MOBILE PHONE
 </div>
-<a href=\"http://www.norden.com/\"><img id=\"norden_logo\" src=\"https://s3.amazonaws.com/S3-Logos/norden-logos/NORDEN_logo_0.png\" width=\"139\" height=\"49\" border=\"0\" /></a>
+<a href="http://www.norden.com/"><img id="norden_logo" src="https://s3.amazonaws.com/S3-Logos/norden-logos/NORDEN_logo_0.png" width="139" height="49" border="0" /></a>
 <br />
-<a href=\"https://www.facebook.com/dampskibsselskabetnorden\"><img id=\"facebook\" src=\"https://s3.amazonaws.com/S3-Logos/norden-logos/Facebook_1.png\" width=\"25\" height=\"25\" border=\"0\" /></a>
-<a href=\"https://www.linkedin.com/company/ds-norden/?originalSubdomain=dk\"><img id=\"linkedin\" src=\"https://s3.amazonaws.com/S3-Logos/norden-logos/LinkedIn_0.png\" width=\"26\" height=\"25\" border=\"0\" /></a>
-<a href=\"https://www.youtube.com/channel/UClzI1ehHAaJBdn7ur7PIvew\"><img id=\"youtube\" src=\"https://s3.amazonaws.com/S3-Logos/norden-logos/Youtube_0.png\" width=\"25\" height=\"25\" border=\"0\" /></a>
-<a href=\"https://www.instagram.com/ds_norden/?hl=da\"><img id=\"instagram\" src=\"https://s3.amazonaws.com/S3-Logos/norden-logos/Instagram_0.png\" width=\"25\" height=\"25\" border=\"0\" /></a>
+<a href="https://www.facebook.com/dampskibsselskabetnorden"><img id="facebook" src="https://s3.amazonaws.com/S3-Logos/norden-logos/Facebook_1.png" width="25" height="25" border="0" /></a>
+<a href="https://www.linkedin.com/company/ds-norden/?originalSubdomain=dk"><img id="linkedin" src="https://s3.amazonaws.com/S3-Logos/norden-logos/LinkedIn_0.png" width="26" height="25" border="0" /></a>
+<a href="https://www.youtube.com/channel/UClzI1ehHAaJBdn7ur7PIvew"><img id="youtube" src="https://s3.amazonaws.com/S3-Logos/norden-logos/Youtube_0.png" width="25" height="25" border="0" /></a>
+<a href="https://www.instagram.com/ds_norden/?hl=da"><img id="instagram" src="https://s3.amazonaws.com/S3-Logos/norden-logos/Instagram_0.png" width="25" height="25" border="0" /></a>
 </div>
-	
 --->
